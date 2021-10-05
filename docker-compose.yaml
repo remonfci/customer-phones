@@ -1,0 +1,36 @@
+version: '3.6'
+services:
+    code:
+        build:
+            context: .
+            dockerfile: .docker/images/code/Dockerfile
+        volumes:
+            - type: bind
+              source: .
+              target: /home/code
+        expose:
+            - "9000"
+        networks:
+            - jumiadev
+
+    webserver:
+        build:
+            context: .
+            dockerfile: .docker/images/webserver/Dockerfile
+        ports:
+            - "8080:80"
+        volumes:
+            - type: bind
+              source: .
+              target: /home/code
+            - type: bind
+              source: .docker/data/webserver
+              target: /var/log/nginx
+        depends_on:
+            - code
+        networks:
+            - jumiadev
+
+networks:
+    jumiadev:
+      driver: bridge

@@ -1,0 +1,21 @@
+* {
+  margin-top: 24px;
+}
+
+.text--success {
+  color: #0f5132;
+}
+
+.text--danger {
+  color: #bd111c;
+}
+
+.min-h-30 {
+  min-height: 40px;
+}
+
+.buttons {
+  text-align: right;
+}
+
+/*# sourceMappingURL=main.css.map */
